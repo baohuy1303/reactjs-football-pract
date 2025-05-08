@@ -63,7 +63,7 @@ function Home( {currentLeague}) {
 
       <div className="movies-grid">
       {loading ? (
-          <p>Loading in the teams...</p>
+          <div className="loading">Loading...</div>
         ) : 
         (englishTeams.map(team => (
           team.title.toLowerCase().startsWith(searchQuery.toLowerCase()) &&  <FootballCard team={team} key={team.id}/>
@@ -71,7 +71,7 @@ function Home( {currentLeague}) {
           )
         )
       }
-      {error != null && (<p>{error}</p>)}
+      {error != null && (<div className="error-message">{error}</div>)}
       </div>
     </div>
 }
