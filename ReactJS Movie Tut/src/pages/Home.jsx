@@ -2,14 +2,14 @@ import FootballCard from "../components/football-card";
 import { useState , useEffect, use} from "react";
 import Navbar from "../components/navbar";
 import '../css/Home.css'
-import { getPremiereLeagueTeams } from "../services/api";
+import { getTeamFromLeage } from "../services/api";
 
-function Home() {
+function Home( {currentLeague}) {
     const [searchQuery, setSearchQuery] = useState('')
     const [englishTeams, setEngTeams] = useState([])
     const engTeamsLoop = []
 
-    const [err, setErr] = useState(null);
+    const [error, setErr] = useState(null);
     const [loading, setLoading] = useState(true);
 
 /*   const teams = [
@@ -19,26 +19,27 @@ function Home() {
     { id: 4, title: "PSG", league: "Ligue 1" },
   ]; */
 
-  useEffect(() => {
-    const loadTeams = async () => {
-      try{
-        const result = await getPremiereLeagueTeams();
-        for (let index = 0; index < result.teams.length; index++) {
-          let thisTeam =result.teams[index];
-          engTeamsLoop.push({id: index, title: thisTeam.strTeam, league: thisTeam.strLeague, url: thisTeam.strBadge, web: thisTeam.strWebsite})
-        }
-        setEngTeams(engTeamsLoop)
-      } catch (err) {
-        console.log(err)
-        setErr('Failed to load teams')
+  const loadTeams = async (loadLeague) => {
+    try{
+      setLoading(true)
+      const result = await getTeamFromLeage(loadLeague);
+      for (let index = 0; index < result.teams.length; index++) {
+        let thisTeam =result.teams[index];
+        engTeamsLoop.push({id: index, title: thisTeam.strTeam, league: thisTeam.strLeague, url: thisTeam.strBadge, web: thisTeam.strWebsite})
       }
-      finally{
-        setLoading(false)
-      }
+      setEngTeams(engTeamsLoop)
+    } catch (err) {
+      console.log(err)
+      setErr('Failed to load teams')
     }
+    finally{
+      setLoading(false)
+    }
+  }
 
-    loadTeams()
-  }, [])
+  useEffect(() =>{
+    loadTeams(currentLeague)
+  }, [currentLeague])
 
   
   function SearchForm(e){
@@ -49,7 +50,6 @@ function Home() {
 
 
   return <div className="home">
-
       <form onSubmit={SearchForm} className="search-form">
         <input 
         type="text" 
@@ -62,9 +62,16 @@ function Home() {
       </form>
 
       <div className="movies-grid">
-        {englishTeams.map(team => (
+      {loading ? (
+          <p>Loading in the teams...</p>
+        ) : 
+        (englishTeams.map(team => (
           team.title.toLowerCase().startsWith(searchQuery.toLowerCase()) &&  <FootballCard team={team} key={team.id}/>
-        ))}
+            )
+          )
+        )
+      }
+      {error != null && (<p>{error}</p>)}
       </div>
     </div>
 }

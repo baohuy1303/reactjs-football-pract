@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import Favorites from './pages/Favorites'
 import Navbar from './components/navbar'
 
+
 function App() {
   return (
     <div>
@@ -13,7 +14,11 @@ function App() {
 
       <main className='main-content'>
         <Routes>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<Home currentLeague={'search_all_teams.php?l=English%20Premier%20League'}/>}/>
+          <Route path='/laliga' element={<Home currentLeague={'search_all_teams.php?l=Spanish%20La%20Liga'}/>}/>
+          <Route path='/seriea' element={<Home currentLeague={'search_all_teams.php?l=Italian%20Serie%20A'}/>}/>
+          <Route path='/bundesliga' element={<Home currentLeague={'search_all_teams.php?l=German%20Bundesliga'}/>}/>
+          <Route path='/ligue1' element={<Home currentLeague={'search_all_teams.php?l=French%20Ligue%201'}/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
         </Routes>
       </main>

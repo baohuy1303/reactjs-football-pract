@@ -22,7 +22,7 @@ function FootballCard({team}){
 
             <div className="movie-info">
                 <h3>{team.title}</h3>
-                <h3>{team.league}</h3>
+                <p>{team.league}</p>
             </div>
         </div>
     )

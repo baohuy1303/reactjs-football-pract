@@ -7,7 +7,11 @@ function Navbar(){
             <Link to={'/'}>Football App</Link>
         </div>
         <div className="navbar-links">
-            <Link to={'/'} className="nav-link">Home</Link>
+            <Link to={'/'} className="nav-link">Premiere Leauge</Link>
+            <Link to={'/laliga'} className="nav-link">La Liga</Link>
+            <Link to={'/seriea'} className="nav-link">Serie A</Link>
+            <Link to={'/bundesliga'} className="nav-link">Bundesliga</Link>
+            <Link to={'/ligue1'} className="nav-link">Ligue 1</Link>
             <Link to={'/favorites'} className="nav-link">Favorites</Link>
         </div>
     </nav>
