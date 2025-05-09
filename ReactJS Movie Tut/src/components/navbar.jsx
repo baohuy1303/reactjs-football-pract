@@ -4,7 +4,7 @@ import '../css/Navbar.css'
 function Navbar(){
     return <nav className="navbar">
         <div className="navbar-brand">
-            <Link to={'/'}>Football App</Link>
+            <Link to={'/'}>Top 5 Football League Search</Link>
         </div>
         <div className="navbar-links">
             <Link to={'/'} className="nav-link">Premiere League</Link>

@@ -6,11 +6,13 @@ import { getTeamFromLeage } from "../services/api";
 
 function Home( {currentLeague}) {
     const [searchQuery, setSearchQuery] = useState('')
-    const [englishTeams, setEngTeams] = useState([])
-    const engTeamsLoop = []
+    const [listTeams, setListTeam] = useState([])
+    const TeamsLoop = []
 
     const [error, setErr] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    let filters = ['C1', 'C2']
 
 /*   const teams = [
     { id: 1, title: "FC Barcelona", league: "La Liga" },
@@ -25,9 +27,9 @@ function Home( {currentLeague}) {
       const result = await getTeamFromLeage(loadLeague);
       for (let index = 0; index < result.teams.length; index++) {
         let thisTeam =result.teams[index];
-        engTeamsLoop.push({id: index, title: thisTeam.strTeam, league: thisTeam.strLeague, url: thisTeam.strBadge, web: thisTeam.strWebsite})
+        TeamsLoop.push({id: index, title: thisTeam.strTeam, league: thisTeam.strLeague, url: thisTeam.strBadge, web: thisTeam.strWebsite})
       }
-      setEngTeams(engTeamsLoop)
+      setListTeam(TeamsLoop)
     } catch (err) {
       console.log(err)
       setErr('Failed to load teams')
@@ -58,14 +60,17 @@ function Home( {currentLeague}) {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}/>
 
-        <button type="Submit" className="search-button">Submit</button>
+       {/* <button type="Submit" className="search-button">Submit</button> */}
+       
       </form>
+
+      
 
       <div className="movies-grid">
       {loading ? (
           <div className="loading">Loading...</div>
         ) : 
-        (englishTeams.map(team => (
+        (listTeams.map(team => (
           team.title.toLowerCase().startsWith(searchQuery.toLowerCase()) &&  <FootballCard team={team} key={team.id}/>
             )
           )
