@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import Favorites from './pages/Favorites'
 import Navbar from './components/navbar'
 import { TeamProvider } from './contexts/TeamContext'
+import TeamInfo from './pages/TeamInfo'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/bundesliga' element={<Home currentLeague={'search_all_teams.php?l=German%20Bundesliga'}/>}/>
           <Route path='/ligue1' element={<Home currentLeague={'search_all_teams.php?l=French%20Ligue%201'}/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
+          <Route path=':id' element={<TeamInfo/>}/>
         </Routes>
       </main>
     </TeamProvider>

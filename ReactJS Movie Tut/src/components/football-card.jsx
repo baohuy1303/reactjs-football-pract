@@ -2,19 +2,19 @@ import '../css/MovieCard.css'
 import { useTeamContext } from '../contexts/TeamContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate} from 'react-router-dom'
+import TeamInfo from '../pages/TeamInfo';
 
 function FootballCard({team}){
     //grab or hook all the state and funcs we need
     const {favorites, removeFromFav, isFavorite, addToFavTeam} = useTeamContext()
     const favorite = isFavorite(team.id)
+    const navigate = useNavigate()
 
     function onTeamClick(){
-        let link = team.web;
-        if(!team.web.startsWith('http')){
-            link = `https://${team.web}`
-        }
-        window.open(link)
+        navigate(`/${team.id}`, { state: { team } })
     }
+        
 
     function onFavorClick(e){
 

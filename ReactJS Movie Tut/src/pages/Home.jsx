@@ -26,7 +26,19 @@ function Home( {currentLeague}) {
       const result = await getTeamFromLeage(loadLeague);
       for (let index = 0; index < result.teams.length; index++) {
         let thisTeam =result.teams[index];
-        TeamsLoop.push({id: thisTeam.idTeam, title: thisTeam.strTeam, league: thisTeam.strLeague, url: thisTeam.strBadge, web: thisTeam.strWebsite})
+        TeamsLoop.push({
+          id: thisTeam.idTeam, 
+          title: thisTeam.strTeam, 
+          league: thisTeam.strLeague, 
+          url: thisTeam.strBadge, 
+          web: thisTeam.strWebsite,
+          //inside each
+          des: thisTeam.strDescriptionEN,
+          img1: thisTeam.strFanart1,
+          img2: thisTeam.strFanart2,
+          venueID: thisTeam.idVenue,
+          
+        })
       }
       setListTeam(TeamsLoop)
     } catch (err) {
