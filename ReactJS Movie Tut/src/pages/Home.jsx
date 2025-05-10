@@ -1,6 +1,5 @@
 import FootballCard from "../components/football-card";
 import { useState , useEffect, use} from "react";
-import Navbar from "../components/navbar";
 import '../css/Home.css'
 import { getTeamFromLeage } from "../services/api";
 
@@ -27,7 +26,7 @@ function Home( {currentLeague}) {
       const result = await getTeamFromLeage(loadLeague);
       for (let index = 0; index < result.teams.length; index++) {
         let thisTeam =result.teams[index];
-        TeamsLoop.push({id: index, title: thisTeam.strTeam, league: thisTeam.strLeague, url: thisTeam.strBadge, web: thisTeam.strWebsite})
+        TeamsLoop.push({id: thisTeam.idTeam, title: thisTeam.strTeam, league: thisTeam.strLeague, url: thisTeam.strBadge, web: thisTeam.strWebsite})
       }
       setListTeam(TeamsLoop)
     } catch (err) {

@@ -5,11 +5,13 @@ import Home from './pages/Home'
 import { Routes, Route } from 'react-router-dom'
 import Favorites from './pages/Favorites'
 import Navbar from './components/navbar'
+import { TeamProvider } from './contexts/TeamContext'
 
 
 function App() {
   return (
-    <div>
+    //can now access anything that this teamProvider gives
+    <TeamProvider>
       <Navbar/>
 
       <main className='main-content'>
@@ -22,7 +24,7 @@ function App() {
           <Route path='/favorites' element={<Favorites/>}/>
         </Routes>
       </main>
-    </div>
+    </TeamProvider>
   );
 }
 

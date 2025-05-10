@@ -33,11 +33,27 @@ export const TeamProvider = ({children}) => {
         This is the same shit    */
         
         setFavorites(prev => [...prev , team])
-
-       
     }
 
-    return <TeamContext.Provider>
+    const removeFromFav = (teamID) =>{
+        /*get the previous array. filter returns elements that meet the condition
+        in this case, the condition is if thisTeam is not the team that we want to
+        remove, then keep it. */
+        setFavorites((prev) => prev.filter(thisTeam => thisTeam.id !== teamID))
+        
+    }
+
+    const isFavorite = (teamID) =>{
+        return favorites.some(thisTeam => thisTeam.id === teamID)
+        //check if current favorites list has this team
+    }
+
+    //all the shit we gonna give the children access to
+    const value = {
+        favorites, addToFavTeam, removeFromFav, isFavorite
+    }
+
+    return <TeamContext.Provider value={value}>
         {children}
     </TeamContext.Provider>
 }
