@@ -1,0 +1,39 @@
+.club-des-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5%;
+    gap: 5%;
+    
+}
+
+.club-des-wrap p{
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 3%;
+    font-size: 19px;
+    line-height: 170%;
+}
+
+.club-des-wrap img{
+    justify-content: center;
+    display: block;
+    height: auto;
+    width: 25vw;
+    padding: 5%;
+}
+
+.club-imgs-wrap{
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.openSec{
+    width: 100%;
+    color: white;
+    font-size: 28px;
+}
+
+.openSec:hover{
+    background-color: rgba(255, 255, 255, 0.05);
+}
