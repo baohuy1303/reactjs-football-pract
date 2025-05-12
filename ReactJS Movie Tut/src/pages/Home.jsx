@@ -37,6 +37,10 @@ function Home( {currentLeague}) {
           img1: thisTeam.strFanart1,
           img2: thisTeam.strFanart2,
           venueID: thisTeam.idVenue,
+          fb: thisTeam.strFacebook,
+          twitter: thisTeam.strTwitter,
+          ig: thisTeam.strInstagram,
+          kit: thisTeam.strEquipment,
           
         })
       }

@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 5%;
+    padding-top: 2%;
     gap: 5%;
     
 }
@@ -37,3 +38,49 @@
 .openSec:hover{
     background-color: rgba(255, 255, 255, 0.05);
 }
+.social-medias{
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    gap: 1.5%;
+}
+
+a {
+    color: white;
+}
+
+a:hover{
+    color: blue;
+}
+
+.matches{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 3fr 0.5fr;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2% 0;
+    align-items: center;
+}
+
+.matches img{
+    display: inline-block;
+    padding: 0;
+    width: 5vw;
+}
+
+.leagueLogo{
+    align-self: flex-start;
+    flex-grow: 0;
+}
+
+
+.matches-results{
+    display: flex;
+}
+
+.matches p{
+    background-color: transparent;
+    white-space: nowrap;
+}
+
