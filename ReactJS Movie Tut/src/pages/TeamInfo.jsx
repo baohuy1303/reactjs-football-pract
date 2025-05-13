@@ -1,4 +1,4 @@
-import { useParams, useLocation} from "react-router-dom"
+import { useParams, useLocation, useFetcher} from "react-router-dom"
 import '../css/TeamInfo.css'
 import DropDownInfo from "../components/dropdown-info";
 import { useState, useEffect } from "react";
@@ -17,6 +17,7 @@ function TeamInfo (){
     const [loading, setLoading] = useState(true);
     const [venueInfo, setVenue] = useState({});
     const [prevMatches, setMatches] = useState([]);
+    const [standings, setStand] = useState([]);
 
     const getVenueInfo = async () =>{
         const response = await fetch(`https://www.thesportsdb.com/api/v1/json/3/lookupvenue.php?id=${team.venueID}`);
@@ -44,7 +45,7 @@ function TeamInfo (){
             logo: thisVenue.strThumb,
             img1: thisVenue.strFanart1,
             img2: thisVenue.strFanart2,
-            capacity: thisVenue.intCapacity
+            capacity: thisVenue.intCapacity,
           }
           setVenue(ThisvenueInfo)
           setMatches(thisMatches)
@@ -58,10 +59,33 @@ function TeamInfo (){
       }
 
       useEffect(() =>{
-        loadVenueMatch()
+        loadVenueMatch();
       }, [])
 
-    console.log(prevMatches)
+
+    const LoadLeagueStand = async () => {
+      if (prevMatches.length === 0) return;
+
+      try{
+        setLoading(true)
+        const response = await fetch(`https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=${team.leagueID}&s=${prevMatches[0].strSeason}`);
+        const result = await response.json()
+        setStand(result.table)
+      }catch (err) {
+        console.log(err)
+        setErr('Failed to load league')
+      }
+      finally{
+        setLoading(false)
+      }
+    }
+
+    useEffect(() =>{
+      LoadLeagueStand();
+    }, [prevMatches]) 
+
+    console.log(standings)
+
 
     return <div>
         <h1 style={{textAlign: "center"}}>{team.title}</h1>
@@ -98,6 +122,13 @@ function TeamInfo (){
                     error: error,
                     loading: loading,
                     results: prevMatches
+                }}/>
+                <DropDownInfo infos={{
+                    title: 'League Standing',
+                    text: team.des,
+                    error: error,
+                    loading: loading,
+                    league: standings
                 }}/>
             </div>
 

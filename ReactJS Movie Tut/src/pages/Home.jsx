@@ -41,7 +41,7 @@ function Home( {currentLeague}) {
           twitter: thisTeam.strTwitter,
           ig: thisTeam.strInstagram,
           kit: thisTeam.strEquipment,
-          
+          leagueID: thisTeam.idLeague
         })
       }
       setListTeam(TeamsLoop)

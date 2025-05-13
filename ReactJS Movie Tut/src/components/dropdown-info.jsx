@@ -17,7 +17,7 @@ function DropDownInfo({ infos }) {
             </button>
 
             
-            {isOpened && !infos.results &&
+            {isOpened && !infos.results && !infos.league &&
                 (infos.loading ? (
                     <div className="loading">Loading...</div>
                 ) : (
@@ -32,7 +32,7 @@ function DropDownInfo({ infos }) {
                     <div className="loading">Loading...</div>
                 ) : (
                     infos.results.map((match) =>(
-                        <div className='matches'>
+                        <div className='matches' key={match.idEvent}>
                             <div className='leagueLogo'>
                             <img src={match.strLeagueBadge} alt="" />
                             </div>
@@ -52,6 +52,27 @@ function DropDownInfo({ infos }) {
             {infos.error != null && (
                 <div className="error-message">{infos.error}</div>
             )}
+
+            {isOpened && infos.league &&
+                (infos.loading ? (
+                    <div className="loading">Loading...</div>
+                ) : (
+                    infos.league.map((team) =>(
+                        <div className='matches' key={team.idStanding}>
+                            <div className='leagueLogo'>
+                            <p>{team.intRank}</p>
+                            </div>
+
+                            <div className='matches-results'>
+                            <img src={team.strBadge} alt="" />
+                            <p>{`${team.strTeam} P: ${team.intPoints} W: ${team.intWin} L: ${team.intLoss}`}</p>
+                            </div>
+
+                            <p>{team.strForm}</p>
+                        
+                        </div>
+                    ))
+                ))}
         </div>
     );
 }
