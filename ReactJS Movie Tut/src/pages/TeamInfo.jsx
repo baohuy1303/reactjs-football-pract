@@ -128,7 +128,8 @@ function TeamInfo (){
                     text: team.des,
                     error: error,
                     loading: loading,
-                    league: standings
+                    league: standings,
+                    teamID: team.id
                 }}/>
             </div>
 

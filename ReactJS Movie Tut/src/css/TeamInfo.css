@@ -5,7 +5,6 @@
     padding: 5%;
     padding-top: 2%;
     gap: 5%;
-    
 }
 
 .club-des-wrap p{
@@ -83,4 +82,26 @@ a:hover{
     background-color: transparent;
     white-space: nowrap;
 }
+
+.league{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2% 0;
+    align-items: center;
+}
+
+.league img{
+    width: 4vw;
+    height: auto;
+}
+
+
+.current-team{
+    background-color: green;
+}
+
+
 

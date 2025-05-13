@@ -58,7 +58,7 @@ function DropDownInfo({ infos }) {
                     <div className="loading">Loading...</div>
                 ) : (
                     infos.league.map((team) =>(
-                        <div className='matches' key={team.idStanding}>
+                        <div className={`matches league ${team.idTeam === infos.teamID && 'current-team'}`} key={team.idStanding}>
                             <div className='leagueLogo'>
                             <p>{team.intRank}</p>
                             </div>
