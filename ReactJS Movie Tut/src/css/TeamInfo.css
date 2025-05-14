@@ -7,12 +7,16 @@
     gap: 5%;
 }
 
+.club-des-wrap button{
+    font-size: clamp(20px,3vw, 30px);
+}
+
 .club-des-wrap p{
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 3%;
-    font-size: 19px;
-    line-height: 170%;
+    font-size: clamp(12px,1vw,20px);
+    line-height: clamp(19px,1.7vw, 35px);
 }
 
 .club-des-wrap img{
@@ -41,7 +45,8 @@
     display: flex;
     justify-content: center;
     padding-top: 2%;
-    gap: 1.5%;
+    gap: 2%;
+    font-size: clamp(10px,1.2vw,20px);
 }
 
 a {
@@ -80,7 +85,11 @@ a:hover{
 
 .matches p{
     background-color: transparent;
+    font-size: clamp(10px,1vw,20px);
     white-space: nowrap;
+}
+.matches a{
+    font-size: 1vw;
 }
 
 .league{
@@ -103,5 +112,31 @@ a:hover{
     background-color: green;
 }
 
+@media (max-width: 800px){
+    .club-des-wrap{
+        display: flex;
+        flex-direction: column;
+    }
+    .club-des-wrap img{
+        display: inline-block;
+        padding: 5%;
+    }
+    .club-des-wrap p{
+        font-size: clamp(12px,1.5vw,15px);
+        line-height: clamp(19px,2vw, 35px);
+    }
 
+    .league img{
+        width: 10vw;
+        height: auto;
+    }
+    .matches img{
+        display: inline-block;
+        padding: 0;
+        width: 5vw;
+    }
 
+    .matches a{
+        font-size: 1vw;
+    }
+}

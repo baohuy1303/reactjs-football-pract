@@ -8,18 +8,18 @@
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: clamp(18px,1vw,20px);
   font-weight: bold;
   color: white;
 }
 
 .navbar-links {
   display: flex;
-  gap: 2rem;
+  gap: clamp(5px, 1vw,32px);
 }
 
 .nav-link {
-  font-size: 1rem;
+  font-size: clamp(15px,1vw,20px);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.2s;
@@ -30,20 +30,22 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem;
+    padding: clamp(10px,2vw,16px);
   }
 
-  .navbar-brand {
-    font-size: 1.2rem;
+  .navbar-brand{
+    font-size: clamp(7px,1.5vw,16px);
   }
 
   .navbar-links {
-    gap: 1rem;
+    gap: clamp(5px, 2vw, 25px)
   }
 
   .nav-link {
-    padding: 0.5rem;
+    padding: clamp(2px, 0.5vw, 5px);
+    font-size: clamp(8px,2.5vw,16px);
   }
 }

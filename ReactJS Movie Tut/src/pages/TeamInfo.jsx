@@ -84,11 +84,9 @@ function TeamInfo (){
       LoadLeagueStand();
     }, [prevMatches]) 
 
-    console.log(standings)
-
 
     return <div>
-        <h1 style={{textAlign: "center"}}>{team.title}</h1>
+        <h1 style={{textAlign: "center", fontSize: 'clamp(40px,4.5vw, 100px)'}}>{team.title}</h1>
         <div className="social-medias">
           <a href={`https://${team.web}`} target="_blank"><FontAwesomeIcon icon={faGlobe} size={socialSize} /></a>
           <a href={`https://${team.fb}`} target="_blank"><FontAwesomeIcon icon={faFacebook} size={socialSize} /></a>
