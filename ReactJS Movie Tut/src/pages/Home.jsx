@@ -1,7 +1,8 @@
 import FootballCard from "../components/football-card";
-import { useState , useEffect, use} from "react";
+import { useState , useEffect} from "react";
 import '../css/Home.css'
 import { getTeamFromLeage } from "../services/api";
+import LeagueHero from "../components/league-hero";
 
 function Home( {currentLeague}) {
     const [searchQuery, setSearchQuery] = useState('')
@@ -66,7 +67,17 @@ function Home( {currentLeague}) {
   }
 
 
-  return <div className="home">
+  return <>
+
+{loading ? (
+          <div className="loading">Loading...</div>
+        ) : 
+        (
+          <LeagueHero value={listTeams[0]}/>
+        )
+      }
+
+  <div className="home">
       <form onSubmit={SearchForm} className="search-form">
         <input 
         type="text" 
@@ -94,6 +105,7 @@ function Home( {currentLeague}) {
       {error != null && (<div className="error-message">{error}</div>)}
       </div>
     </div>
+    </>
 }
 
 export default Home

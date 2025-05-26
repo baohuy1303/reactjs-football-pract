@@ -39,7 +39,8 @@ function DropDownInfo({ infos }) {
 
                             <div className='matches-results'>
                             <img src={match.strHomeTeamBadge} alt="" />
-                            <p>{`${match.strHomeTeam} ${match.intHomeScore} - ${match.intAwayScore} ${match.strAwayTeam}`}</p>
+                            <p className='score1'>{`${match.strHomeTeam} ${match.intHomeScore} - ${match.intAwayScore} ${match.strAwayTeam}`}</p>
+                            <p className='score2'>{`${match.intHomeScore} - ${match.intAwayScore}`}</p>
                             <img src={match.strAwayTeamBadge} alt="" />
                             <p>{match.dateEvent}</p>
                             </div>
@@ -60,15 +61,19 @@ function DropDownInfo({ infos }) {
                     infos.league.map((team) =>(
                         <div className={`matches league ${team.idTeam === infos.teamID && 'current-team'}`} key={team.idStanding}>
                             <div className='leagueLogo'>
-                            <p>{team.intRank}</p>
+                            <h3>{team.intRank}</h3>
                             </div>
 
                             <div className='matches-results'>
                             <img src={team.strBadge} alt="" />
-                            <p>{`${team.strTeam} P: ${team.intPoints} W: ${team.intWin} L: ${team.intLoss}`}</p>
+                            <p className='score1'>{`${team.strTeam} P: ${team.intPoints} W: ${team.intWin} L: ${team.intLoss}`}</p>
+                            <p className='score2'>{`P: ${team.intPoints} W: ${team.intWin} L: ${team.intLoss}`}</p>
                             </div>
 
-                            <p>{team.strForm}</p>
+                            <div style={{display: 'flex', justifyContent: 'center'}}>
+                                <p className='teamForm'>{team.strForm}</p>
+                            </div>
+
                         
                         </div>
                     ))

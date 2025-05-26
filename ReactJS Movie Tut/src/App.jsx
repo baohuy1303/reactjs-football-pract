@@ -7,6 +7,7 @@ import Favorites from './pages/Favorites'
 import Navbar from './components/navbar'
 import { TeamProvider } from './contexts/TeamContext'
 import TeamInfo from './pages/TeamInfo'
+import LeagueHero from './components/league-hero'
 
 
 function App() {
@@ -14,7 +15,6 @@ function App() {
     //can now access anything that this teamProvider gives
     <TeamProvider>
       <Navbar/>
-
       <main className='main-content'>
         <Routes>
           <Route path='/' element={<Home currentLeague={'search_all_teams.php?l=English%20Premier%20League'}/>}/>
