@@ -22,7 +22,6 @@ function FootballCard({team}){
             removeFromFav(team.id)
         }else{
             addToFavTeam(team)
-            alert("favorited")
         }
     }
 
