@@ -38,7 +38,7 @@ useEffect(()=>{
                     <p>{league.des}</p>
                 </div>
                 
-                <img src={process.env.VITE_BASE_PATH + league.imgSrc} alt="Premier League Logo" />
+                <img src={league.imgSrc} alt="Premier League Logo" />
             </div>)
         }
 
